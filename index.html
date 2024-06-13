@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            font-family: "pretendard";
+        }
+
+        /* 헤더 */
+        header {
+            background: #fff;
+            height: 80px;
+            transition: top 0.2s ease-in-out;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            position: fixed;
+            /* 고정 위치 */
+            width: 100vw;
+            /* 전체 너비 */
+            top: 0;
+            /* 최상단에서 시작 */
+            left: 0;
+            /* 왼쪽 끝에서 시작 */
+            z-index: 1;
+            /* 다른 요소들 위에 위치 */
+        }
+
+        .logo-container {
+            /* 필요한 경우 추가 스타일링 */
+            margin: 50px;
+            padding: 13px 30px 7px 30px;
+            border: solid 1px #000;
+            border-radius: 50px;
+        }
+
+        .logo-container:hover {
+            opacity: 30%;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav li {
+            list-style: none;
+            padding-right: 50px;
+        }
+
+        nav li a {
+            color: #000;
+            border: solid 1px #000;
+            border-radius: 50px;
+            padding: 10px 30px 10px 30px;
+            font-size: 15px;
+            text-decoration: none;
+        }
+
+        nav li a:hover {
+            opacity: 30%;
+        }
+
+
+
+        .container {
+            justify-content: center;
+            /* 수평 중앙 정렬 */
+            align-items: center;
+            /* 수직 중앙 정렬 (필요한 경우) */
+            display: block;
+            /* Each container takes the full width and stacks vertically */
+            text-align: center;
+            /* Centers the image horizontally */
+        }
+
+        .container img {
+            margin-bottom: 20px;
+        }
+
+
+        /* 섹션 */
+
+        main {
+            padding-top: 80px;
+            width: 100%;
+            /* 넉넉한 여백으로 헤더와 내용이 겹치지 않게 함 */
+        }
+
+        .section {
+            position: relative;
+            width: 100vw;
+            height: 1080px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(45px);
+            transition: all 0.6s ease-out;
+        }
+
+        /* 화면에 들어올 때 애니메이션 적용 */
+        .section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        /* 메인 */
+        .aqua {
+            background: linear-gradient(to top, #E0E6F4 20%, #E0E6F4 50%, #fff 100%);
+            height: 980px;
+        }
+
+        .aqua img {
+            width: 80%;
+        }
+
+        /* 영상 */
+        .pink {
+            background: #fff;
+            height: 100%;
+            margin-bottom: 200px !important;
+        }
+
+        /* 기획 */
+        .blue {
+            background: #fff;
+            min-height: 2400px;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            justify-content: center;
+            margin-bottom: 100px !important;
+        }
+
+        /* 앱 소개 */
+        .orange {
+            background: #fff;
+            height: 8101px;
+            margin-bottom: 100px !important;
+        }
+
+        .orange img {
+            width: 100%;
+
+        }
+
+        /* 디자인 */
+        .purple {
+            background: #fff;
+            min-height: 1807px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 200px !important;
+        }
+
+        /* 마지막 */
+        .green {
+            background: #fff;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 200px;
+        }
+
+        .grey {
+            background: #fff;
+            height: 1018px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 200px;
+        }
+
+        .grey img {
+            width: 100%;
+        }
+
+
+        footer {
+            width: 100%;
+            height: 300px;
+            background: #000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-right {
+            margin-right: 200px;
+            display: flex;
+            justify-content: flex-end;
+            /* 오른쪽에 요소들을 정렬 */
+        }
+
+        .footer-left {
+            margin-left: 200px;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .footer-item {
+            margin-left: 150px;
+            color: #fff;
+        }
+
+        footer strong {
+            font-size: 20px;
+            /* 이름의 폰트 사이즈를 28px로 설정 */
+        }
+
+
+
+
+
+        /* 배너 무한 롤링 스크롤 */
+        .wrap {
+            margin-top: 200px;
+            display: flex;
+            overflow: hidden;
+        }
+
+        .wrap .rolling-list ul {
+            display: flex;
+        }
+
+        .wrap .rolling-list ul li {
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .wrap .rolling-list ul li .image-wrap {
+
+            padding-right: 500px;
+            width: 156px;
+            flex-shrink: 0;
+        }
+
+        /* .wrap .rolling-list ul li .image-wrap > img { 
+	width: 100%;
+} */
+
+        .rolling-list.original {
+            animation: rollingleft1 33s linear infinite;
+        }
+
+        .rolling-list.clone {
+            animation: rollingleft2 33s linear infinite;
+        }
+
+        @keyframes rollingleft1 {
+            0% {
+                transform: translateX(0);
+            }
+
+            50% {
+                transform: translateX(-100%);
+            }
+
+            50.01% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes rollingleft2 {
+            0% {
+                transition: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-200%);
+            }
+        }
+
+        #banner {
+            width: 1520px;
+            height: 841px;
+            overflow: hidden;
+            position: relative;
+            margin: 0 auto;
+            background-image: url('img/3.svg');
+        }
+
+
+        #mtext {
+            width: 1520px;
+            height: 679px;
+            z-index: 0;
+            margin: 0 auto;
+            background-image: url('img/2.svg');
+        }
+
+        #mtext img {
+            width: 1341px;
+            height: 588px;
+            margin: 45px 54px 0 0;
+        }
+
+        #mmtext {
+            width: 1520px;
+            height: 679px;
+            margin-bottom: 20px;
+        }
+
+
+
+
+        /* 비디오 */
+        #videoContainer {
+            position: relative;
+            width: 100%;
+            height: auto;
+        }
+
+        #myVideo {
+            width: 100%;
+            height: 1080px;
+        }
+
+        #playMessage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 16px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 50px;
+            display: block;
+            /* Show the message initially */
+            pointer-events: none;
+            /* Allows clicking through the div */
+        }
+
+
+        #myVideo2 {
+            width: 100%;
+            height: 1080px;
+        }
+
+        #playMessage2 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 16px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 50px;
+            display: block;
+            /* Show the message initially */
+            pointer-events: none;
+            /* Allows clicking through the div */
+        }
+
+
+
+
+        .section {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .image-overlay {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .overlay-gif {
+            position: absolute;
+            width: 2vw;
+            /* 각 이미지의 너비를 비율로 조정 */
+            max-width: 20vw;
+            /* 최대 너비 설정 */
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 개별 GIF 위치 조정을 보다 세밀하게 조절 */
+        .gif1 {
+            top: 6vw;
+            right: 15vw;
+        }
+
+        .gif2 {
+            top: 60vw;
+            right: 15vw;
+        }
+
+        .gif3 {
+            top: 112vw;
+            right: 15vw;
+        }
+
+        .gif4 {
+            top: 165vw;
+            left: 15vw;
+        }
+
+        .gif5 {
+            top: 217vw;
+            right: 15vw;
+        }
+
+        .gif6 {
+            top: 269vw;
+            left: 15vw;
+        }
+
+        .gif7 {
+            top: 321vw;
+            right: 15vw;
+        }
+
+        .gif8 {
+            top: 375vw;
+            left: 15vw;
+        }
+
+
+        .i {
+            position: absolute;
+            width: 100vw;
+            /* 부모 컨테이너의 전체 너비를 사용 */
+            height: 100vw;
+            /* 이미지의 높이에 맞춤 */
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ii {
+            width: 100vw;
+            /* 이미지를 컨테이너 너비에 맞춤 */
+            height: 100vw;
+            /* 비율 유지 */
+            
+        }
+
+        .iii {
+            position: absolute;
+            /* 배경 이미지 위에 절대 위치 */
+            top: 27vw;
+            /* 상단 정렬 */
+            right: 7.8vw;
+            width: 24.7vw;
+            /* 컨테이너 너비에 맞춤 */
+            /* height: 965px; */
+            /* 비율 유지 */
+            z-index: 10;
+            /* 배경 이미지 위에 위치 */
+            
+        }
+    </style>
+</head>
+
+<body>
+    <header class="nav_down">
+        <div class="logo-container">
+            <a href="#main"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="17" viewBox="0 0 48 17"
+                    fill="none">
+                    <path
+                        d="M42.6749 12.1536L45.1633 3.83008H47.8424L44.0708 14.6246C43.9899 14.8616 43.8801 15.1159 43.7413 15.3876C43.6084 15.6593 43.4263 15.9165 43.1951 16.1592C42.9697 16.4078 42.6835 16.6101 42.3367 16.7662C41.9957 16.9222 41.5766 17.0003 41.0795 17.0003C40.8426 17.0003 40.6489 16.9858 40.4986 16.9569C40.3483 16.928 40.1692 16.8875 39.9611 16.8355V15.0061C40.0247 15.0061 40.0911 15.0061 40.1605 15.0061C40.2299 15.0119 40.2963 15.0148 40.3599 15.0148C40.6894 15.0148 40.9582 14.9772 41.1662 14.902C41.3743 14.8269 41.542 14.7113 41.6691 14.5552C41.7963 14.4049 41.8974 14.2084 41.9726 13.9657L42.6749 12.1536ZM41.6344 3.83008L43.672 10.6276L44.0274 13.272L42.3281 13.4541L38.9553 3.83008H41.6344Z"
+                        fill="black" />
+                    <path
+                        d="M38.4699 3.82962V5.59836H33.0076V3.82962H38.4699ZM34.3601 1.51465H36.8572V10.3844C36.8572 10.656 36.8919 10.8641 36.9612 11.0086C37.0364 11.1531 37.1462 11.2543 37.2907 11.3121C37.4352 11.3641 37.6173 11.3901 37.8369 11.3901C37.993 11.3901 38.1317 11.3843 38.2531 11.3728C38.3803 11.3554 38.4872 11.3381 38.5739 11.3208L38.5826 13.1589C38.3687 13.2282 38.1375 13.2831 37.8889 13.3236C37.6404 13.3641 37.3658 13.3843 37.0653 13.3843C36.5161 13.3843 36.0364 13.2947 35.626 13.1155C35.2214 12.9305 34.9093 12.6358 34.6896 12.2311C34.47 11.8265 34.3601 11.2947 34.3601 10.6358V1.51465Z"
+                        fill="black" />
+                    <path
+                        d="M29.8257 10.6185C29.8257 10.4393 29.7737 10.2775 29.6697 10.133C29.5656 9.98846 29.372 9.85551 29.0888 9.73413C28.8113 9.60696 28.4096 9.49136 27.8836 9.38732C27.4096 9.28327 26.9674 9.15322 26.557 8.99715C26.1524 8.83531 25.7998 8.64167 25.4993 8.41624C25.2045 8.19082 24.9733 7.92493 24.8056 7.61858C24.638 7.30645 24.5542 6.95096 24.5542 6.55213C24.5542 6.15908 24.638 5.78914 24.8056 5.44233C24.979 5.09552 25.2247 4.78917 25.5426 4.52328C25.8663 4.25161 26.2593 4.04063 26.7218 3.89035C27.19 3.73428 27.716 3.65625 28.2998 3.65625C29.1148 3.65625 29.8142 3.7863 30.398 4.04641C30.9875 4.30652 31.4384 4.66489 31.7505 5.12153C32.0684 5.57239 32.2274 6.08682 32.2274 6.66484H29.7304C29.7304 6.42207 29.6783 6.20532 29.5743 6.01457C29.476 5.81804 29.32 5.66487 29.1061 5.55505C28.898 5.43944 28.6263 5.38164 28.2911 5.38164C28.0136 5.38164 27.7738 5.43077 27.5715 5.52903C27.3691 5.62152 27.2131 5.74868 27.1033 5.91053C26.9992 6.06659 26.9472 6.24 26.9472 6.43075C26.9472 6.57525 26.9761 6.7053 27.0339 6.82091C27.0975 6.93073 27.1986 7.03189 27.3374 7.12437C27.4761 7.21685 27.6553 7.30356 27.8749 7.38448C28.1003 7.45962 28.3778 7.52898 28.7073 7.59257C29.3835 7.73129 29.9876 7.91337 30.5194 8.13879C31.0511 8.35844 31.4731 8.65901 31.7852 9.0405C32.0973 9.41622 32.2534 9.91042 32.2534 10.5231C32.2534 10.9393 32.1609 11.3208 31.976 11.6676C31.791 12.0144 31.5251 12.3179 31.1783 12.578C30.8315 12.8323 30.4153 13.0317 29.9298 13.1762C29.45 13.315 28.9096 13.3843 28.3084 13.3843C27.4356 13.3843 26.6958 13.2283 26.0888 12.9161C25.4877 12.604 25.0311 12.2081 24.7189 11.7283C24.4126 11.2428 24.2594 10.7457 24.2594 10.237H26.6264C26.638 10.578 26.7247 10.8526 26.8865 11.0607C27.0541 11.2688 27.2651 11.4191 27.5194 11.5115C27.7795 11.604 28.0599 11.6503 28.3604 11.6503C28.6841 11.6503 28.9529 11.6069 29.1668 11.5202C29.3807 11.4277 29.5425 11.3063 29.6523 11.1561C29.7679 11 29.8257 10.8208 29.8257 10.6185Z"
+                        fill="black" />
+                    <path
+                        d="M18.5889 12.1536L21.0773 3.83008H23.7564L19.9849 14.6246C19.9039 14.8616 19.7941 15.1159 19.6554 15.3876C19.5224 15.6593 19.3404 15.9165 19.1092 16.1592C18.8837 16.4078 18.5976 16.6101 18.2508 16.7662C17.9098 16.9222 17.4907 17.0003 16.9936 17.0003C16.7566 17.0003 16.563 16.9858 16.4127 16.9569C16.2624 16.928 16.0832 16.8875 15.8751 16.8355V15.0061C15.9387 15.0061 16.0052 15.0061 16.0746 15.0061C16.1439 15.0119 16.2104 15.0148 16.274 15.0148C16.6034 15.0148 16.8722 14.9772 17.0803 14.902C17.2884 14.8269 17.456 14.7113 17.5832 14.5552C17.7104 14.4049 17.8115 14.2084 17.8866 13.9657L18.5889 12.1536ZM17.5485 3.83008L19.586 10.6276L19.9415 13.272L18.2421 13.4541L14.8694 3.83008H17.5485Z"
+                        fill="black" />
+                    <path
+                        d="M0 13.211V0H3.94523L7.00845 8.22138L10.0836 0H13.8858V13.211H11.1444V4.0663L7.65209 13.211H6.16219L2.66989 4.0663V13.211H0Z"
+                        fill="black" />
+                </svg></a>
+        </div>
+        <nav>
+            <li><a href="#opening">OPENING</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#service">SERVICE</a></li>
+            <li><a href="#design">DESIGN</a></li>
+            <li><a href="#epilogue">EPILOGUE</a></li>
+        </nav>
+    </header>
+
+    <main>
+        <div class="section aqua" id="main">
+            <img src="img/main gif.gif">
+        </div>
+
+
+        <div class="section pink" id="opening">
+            <div id="videoContainer">
+                <video id="myVideo" width="100%" height="auto">
+                    <source src="img/1.mp4" type="video/mp4">
+                </video>
+                <div id="playMessage">영상을 재생하려면 클릭하세요!</div>
+            </div>
+        </div>
+
+        <div class="section blue" id="about">
+            <div class="container">
+
+
+                <div id="mmtext">
+                    <div id="mtext">
+                        <img src="img/22.svg">
+                    </div>
+
+                    <img src="img/bond note.gif" alt="" style="width: 238px;
+                    height: 223px;
+                    position: relative;
+                    top: -103%;
+                    left: -3%;
+                    ">
+
+                    <img src="img/commu.gif" alt="" style="width: 134px;
+                    height: 124px;
+                    position: relative;
+                    bottom: 57%;
+                right: -39%;
+                    ">
+                </div>
+
+
+                <img src="img/keywords.gif" style="border-radius: 30px;">
+
+                <div id="banner">
+                    <div class="wrap"> <!-- 배너표시영역 -->
+                        <div class="rolling-list"> <!-- 원본배너 -->
+                            <ul>
+                                <li>
+                                    <div class="image-wrap"><img src="img/a.svg" alt=""></div>
+
+                                </li>
+                                <li>
+                                    <div class="image-wrap"><img src="img/a2.svg" alt=""></div>
+
+                                </li>
+                                <li>
+                                    <div class="image-wrap"><img src="img/a3.svg" alt=""></div>
+
+                                </li>
+                                <li>
+                                    <div class="image-wrap"><img src="img/a4.svg" alt=""></div>
+
+                                </li>
+                                <li>
+                                    <div class="image-wrap"><img src="img/a5.svg" alt=""></div>
+
+                                </li>
+                                <li>
+                                    <div class="image-wrap"><img src="img/a6.svg" alt=""></div>
+
+                                </li>
+                                <li>
+                                    <div class="image-wrap"><img src="img/a7.svg" alt=""></div>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <div class="section orange" id="service">
+            <div class="image-overlay">
+                <img src="img/4.svg" alt="Background Image" class="background-image">
+                <!-- 여러 개의 GIF 이미지 추가 -->
+                <img src="img/g1.gif" alt="Overlay GIF 1" class="overlay-gif gif1">
+                <img src="img/g2.gif" alt="Overlay GIF 2" class="overlay-gif gif2">
+                <img src="img/g3.gif" alt="Overlay GIF 3" class="overlay-gif gif3">
+                <img src="img/g4.gif" alt="Overlay GIF 4" class="overlay-gif gif4">
+                <img src="img/g5.gif" alt="Overlay GIF 5" class="overlay-gif gif5">
+                <img src="img/g6.gif" alt="Overlay GIF 6" class="overlay-gif gif6">
+                <img src="img/g7.gif" alt="Overlay GIF 7" class="overlay-gif gif7">
+                <img src="img/g8.gif" alt="Overlay GIF 8" class="overlay-gif gif8">
+            </div>
+        </div>
+
+
+        <div class="section purple" id="design">
+            <div class="i">
+                <img src="img/5.svg" alt="Background Image" class="ii">
+                <img src="img/gg1.gif" alt="Overlay GIF" class="iii">
+            </div>
+        </div>
+
+
+        <div class="section green" id="epilogue">
+            <div id="videoContainer">
+                <video id="myVideo2" width="100%" height="auto">
+                    <source src="img/2.mp4" type="video/mp4">
+                </video>
+                <div id="playMessage2">영상을 재생하려면 클릭하세요!</div>
+            </div>
+        </div>
+
+
+
+        <div class="section grey" id="epilogue">
+            <img src="img/6.svg">
+        </div>
+
+
+
+    </main>
+
+
+    <footer>
+        <div class="footer-left">
+            <a href="#main"><svg xmlns="http://www.w3.org/2000/svg" width="100" height="35" viewBox="0 0 48 17"
+                    fill="none">
+                    <path
+                        d="M42.6749 12.1536L45.1633 3.83008H47.8424L44.0708 14.6246C43.9899 14.8616 43.8801 15.1159 43.7413 15.3876C43.6084 15.6593 43.4263 15.9165 43.1951 16.1592C42.9697 16.4078 42.6835 16.6101 42.3367 16.7662C41.9957 16.9222 41.5766 17.0003 41.0795 17.0003C40.8426 17.0003 40.6489 16.9858 40.4986 16.9569C40.3483 16.928 40.1692 16.8875 39.9611 16.8355V15.0061C40.0247 15.0061 40.0911 15.0061 40.1605 15.0061C40.2299 15.0119 40.2963 15.0148 40.3599 15.0148C40.6894 15.0148 40.9582 14.9772 41.1662 14.902C41.3743 14.8269 41.542 14.7113 41.6691 14.5552C41.7963 14.4049 41.8974 14.2084 41.9726 13.9657L42.6749 12.1536ZM41.6344 3.83008L43.672 10.6276L44.0274 13.272L42.3281 13.4541L38.9553 3.83008H41.6344Z"
+                        fill="white" />
+                    <path
+                        d="M38.4699 3.82962V5.59836H33.0076V3.82962H38.4699ZM34.3601 1.51465H36.8572V10.3844C36.8572 10.656 36.8919 10.8641 36.9612 11.0086C37.0364 11.1531 37.1462 11.2543 37.2907 11.3121C37.4352 11.3641 37.6173 11.3901 37.8369 11.3901C37.993 11.3901 38.1317 11.3843 38.2531 11.3728C38.3803 11.3554 38.4872 11.3381 38.5739 11.3208L38.5826 13.1589C38.3687 13.2282 38.1375 13.2831 37.8889 13.3236C37.6404 13.3641 37.3658 13.3843 37.0653 13.3843C36.5161 13.3843 36.0364 13.2947 35.626 13.1155C35.2214 12.9305 34.9093 12.6358 34.6896 12.2311C34.47 11.8265 34.3601 11.2947 34.3601 10.6358V1.51465Z"
+                        fill="white" />
+                    <path
+                        d="M29.8257 10.6185C29.8257 10.4393 29.7737 10.2775 29.6697 10.133C29.5656 9.98846 29.372 9.85551 29.0888 9.73413C28.8113 9.60696 28.4096 9.49136 27.8836 9.38732C27.4096 9.28327 26.9674 9.15322 26.557 8.99715C26.1524 8.83531 25.7998 8.64167 25.4993 8.41624C25.2045 8.19082 24.9733 7.92493 24.8056 7.61858C24.638 7.30645 24.5542 6.95096 24.5542 6.55213C24.5542 6.15908 24.638 5.78914 24.8056 5.44233C24.979 5.09552 25.2247 4.78917 25.5426 4.52328C25.8663 4.25161 26.2593 4.04063 26.7218 3.89035C27.19 3.73428 27.716 3.65625 28.2998 3.65625C29.1148 3.65625 29.8142 3.7863 30.398 4.04641C30.9875 4.30652 31.4384 4.66489 31.7505 5.12153C32.0684 5.57239 32.2274 6.08682 32.2274 6.66484H29.7304C29.7304 6.42207 29.6783 6.20532 29.5743 6.01457C29.476 5.81804 29.32 5.66487 29.1061 5.55505C28.898 5.43944 28.6263 5.38164 28.2911 5.38164C28.0136 5.38164 27.7738 5.43077 27.5715 5.52903C27.3691 5.62152 27.2131 5.74868 27.1033 5.91053C26.9992 6.06659 26.9472 6.24 26.9472 6.43075C26.9472 6.57525 26.9761 6.7053 27.0339 6.82091C27.0975 6.93073 27.1986 7.03189 27.3374 7.12437C27.4761 7.21685 27.6553 7.30356 27.8749 7.38448C28.1003 7.45962 28.3778 7.52898 28.7073 7.59257C29.3835 7.73129 29.9876 7.91337 30.5194 8.13879C31.0511 8.35844 31.4731 8.65901 31.7852 9.0405C32.0973 9.41622 32.2534 9.91042 32.2534 10.5231C32.2534 10.9393 32.1609 11.3208 31.976 11.6676C31.791 12.0144 31.5251 12.3179 31.1783 12.578C30.8315 12.8323 30.4153 13.0317 29.9298 13.1762C29.45 13.315 28.9096 13.3843 28.3084 13.3843C27.4356 13.3843 26.6958 13.2283 26.0888 12.9161C25.4877 12.604 25.0311 12.2081 24.7189 11.7283C24.4126 11.2428 24.2594 10.7457 24.2594 10.237H26.6264C26.638 10.578 26.7247 10.8526 26.8865 11.0607C27.0541 11.2688 27.2651 11.4191 27.5194 11.5115C27.7795 11.604 28.0599 11.6503 28.3604 11.6503C28.6841 11.6503 28.9529 11.6069 29.1668 11.5202C29.3807 11.4277 29.5425 11.3063 29.6523 11.1561C29.7679 11 29.8257 10.8208 29.8257 10.6185Z"
+                        fill="white" />
+                    <path
+                        d="M18.5889 12.1536L21.0773 3.83008H23.7564L19.9849 14.6246C19.9039 14.8616 19.7941 15.1159 19.6554 15.3876C19.5224 15.6593 19.3404 15.9165 19.1092 16.1592C18.8837 16.4078 18.5976 16.6101 18.2508 16.7662C17.9098 16.9222 17.4907 17.0003 16.9936 17.0003C16.7566 17.0003 16.563 16.9858 16.4127 16.9569C16.2624 16.928 16.0832 16.8875 15.8751 16.8355V15.0061C15.9387 15.0061 16.0052 15.0061 16.0746 15.0061C16.1439 15.0119 16.2104 15.0148 16.274 15.0148C16.6034 15.0148 16.8722 14.9772 17.0803 14.902C17.2884 14.8269 17.456 14.7113 17.5832 14.5552C17.7104 14.4049 17.8115 14.2084 17.8866 13.9657L18.5889 12.1536ZM17.5485 3.83008L19.586 10.6276L19.9415 13.272L18.2421 13.4541L14.8694 3.83008H17.5485Z"
+                        fill="white" />
+                    <path
+                        d="M0 13.211V0H3.94523L7.00845 8.22138L10.0836 0H13.8858V13.211H11.1444V4.0663L7.65209 13.211H6.16219L2.66989 4.0663V13.211H0Z"
+                        fill="white" />
+                </svg>
+            </a>
+        </div>
+
+        <div class="footer-right">
+            <span class="footer-item"><strong>Kim Yeonwoo</strong><br>Programmer</span>
+            <span class="footer-item"><strong>Lee Jiyun</strong><br>Designer</span>
+            <span class="footer-item"><strong>Jo Yunsol</strong><br>Designer</span>
+        </div>
+    </footer>
+
+
+    <script>
+
+        let lastScrollTop = 0; // 사용자가 마지막으로 스크롤한 위치를 저장할 변수
+        const header = document.querySelector('header'); // 헤더 요소 선택
+
+        window.addEventListener('scroll', function () {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > lastScrollTop) {
+                // 아래로 스크롤할 때 헤더 숨기기
+                header.style.top = "-80px"; // 헤더의 높이만큼 위로 올려 숨김
+            } else {
+                // 위로 스크롤할 때 헤더 보이기
+                header.style.top = "0";
+            }
+            lastScrollTop = scrollTop; // 마지막 스크롤 위치 업데이트
+        });
+
+
+
+        // favicon
+        var faviconRoute = '/웹/최종/img/favicon/';
+        var faviconNames = ['1.png', '2.png', '3.png', '4.png', '5.png',
+            '6.png', '7.png'];
+
+        var idx = 0;
+
+        setInterval(func, 500);
+
+        function func() {
+            document.querySelector("#favicon").setAttribute('href', faviconRoute + faviconNames[idx++]);
+            idx %= faviconNames.length;
+        }
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const sections = document.querySelectorAll('.section');
+
+            const revealSection = () => {
+                const viewportHeight = window.innerHeight;
+                sections.forEach(section => {
+                    const sectionTop = section.getBoundingClientRect().top;
+                    if (sectionTop < viewportHeight - 150) { // 섹션이 뷰포트의 150px 위에 도달하면
+                        section.classList.add('show');
+                    } else {
+                        section.classList.remove('show'); // 스크롤을 올릴 때 다시 숨김
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', revealSection);
+        });
+
+
+        // 비디오와 메시지 요소에 대한 제어를 설정하는 함수
+        function setupVideoControls(videoId, messageId) {
+            var video = document.getElementById(videoId);
+            var message = document.getElementById(messageId);
+
+            // 비디오 클릭 시 재생 또는 일시 정지
+            video.addEventListener('click', function () {
+                if (video.paused) {
+                    video.play();
+                    message.style.display = 'none'; // 재생 시 메시지 숨기기
+                } else {
+                    video.pause();
+                    message.style.display = 'block'; // 일시 정지 시 메시지 표시
+                }
+            });
+
+            // 비디오 재생 시 메시지 숨기기
+            video.addEventListener('play', function () {
+                message.style.display = 'none';
+            });
+
+            // 비디오 일시정지 시 메시지 표시
+            video.addEventListener('pause', function () {
+                message.style.display = 'block';
+            });
+        }
+
+        // DOM이 로드된 후에 비디오 제어 설정을 초기화
+        document.addEventListener('DOMContentLoaded', function () {
+            setupVideoControls('myVideo', 'playMessage'); // 기존 비디오
+            setupVideoControls('myVideo2', 'playMessage2'); // 새 비디오
+        });
+
+
+        // 롤링 배너 복제본 생성
+        let roller = document.querySelector('.rolling-list');
+        roller.id = 'roller1'; // 아이디 부여
+
+        let clone = roller.cloneNode(true)
+        // cloneNode : 노드 복제. 기본값은 false. 자식 노드까지 복제를 원하면 true 사용
+        clone.id = 'roller2';
+        document.querySelector('.wrap').appendChild(clone); // wrap 하위 자식으로 부착
+
+        document.querySelector('#roller1').style.left = '0px';
+        document.querySelector('#roller2').style.left = document.querySelector('.rolling-list ul').offsetWidth + 'px';
+        // offsetWidth : 요소의 크기 확인(margin을 제외한 padding값, border값까지 계산한 값)
+
+        roller.classList.add('original');
+        clone.classList.add('clone');
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const headerHeight = 80; // 헤더 높이 설정
+            document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault(); // 기본 이동 기능 중지
+
+                    const targetId = this.getAttribute('href');
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        const targetTop = target.getBoundingClientRect().top + window.pageYOffset;
+                        const currentTop = window.pageYOffset;
+                        const isScrollingUp = targetTop < currentTop; // 현재 목표 위치가 현재 위치보다 위에 있는지 확인
+
+                        window.scrollTo({
+                            top: targetTop - (isScrollingUp ? headerHeight : 0), // 위로 스크롤 시에만 헤더 높이 고려
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+
+    </script>
+
+
+
+</body>
+
+</html>
